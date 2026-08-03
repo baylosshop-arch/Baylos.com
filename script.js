@@ -206,3 +206,47 @@ document.getElementById("totalHarga").innerHTML =
 "Total : Rp "+total.toLocaleString();
 
 }
+
+/* ===========================
+LOGIN
+=========================== */
+
+const loginBtn = document.querySelector(".login-btn");
+
+if(loginBtn){
+
+loginBtn.onclick=function(){
+
+document.getElementById("loginPopup").style.display="flex";
+
+}
+
+}
+
+function tutupLogin(){
+
+document.getElementById("loginPopup").style.display="none";
+
+}
+
+function prosesLogin(){
+
+let user=document.getElementById("username").value;
+
+let pass=document.getElementById("password").value;
+
+if(user=="" || pass==""){
+
+alert("Lengkapi data login.");
+
+return;
+
+}
+
+localStorage.setItem("username",user);
+
+alert("Selamat datang "+user);
+
+tutupLogin();
+
+}

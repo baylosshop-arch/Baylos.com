@@ -658,3 +658,73 @@ font-size:18px;
 background:#e91e63;
 
 }
+
+/* =======================
+DETAIL PRODUK
+======================= */
+
+.detail-container{
+
+display:flex;
+
+gap:40px;
+
+padding:40px;
+
+flex-wrap:wrap;
+
+}
+
+.detail-image{
+
+flex:1;
+
+min-width:300px;
+
+}
+
+.detail-image img{
+
+width:100%;
+
+border-radius:20px;
+
+box-shadow:0 10px 20px rgba(0,0,0,.1);
+
+}
+
+.detail-info{
+
+flex:1;
+
+min-width:300px;
+
+}
+
+.detail-info h1{
+
+margin-bottom:10px;
+
+font-size:35px;
+
+}
+
+.detail-info h2{
+
+color:#00a859;
+
+margin:20px 0;
+
+}
+
+.detail-button{
+
+display:flex;
+
+gap:15px;
+
+margin-top:25px;
+
+flex-wrap:wrap;
+
+}

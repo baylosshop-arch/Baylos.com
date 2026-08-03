@@ -150,3 +150,114 @@ document.querySelector(".icon-btn").addEventListener("click",()=>{
     alert("Produk ditambahkan ke Wishlist ❤️");
 
 });
+
+/* =====================================
+   BAYLOS SHOP PART 5
+===================================== */
+
+/* ===== LOCAL STORAGE CART ===== */
+
+let jumlahKeranjang = localStorage.getItem("cart");
+
+if(jumlahKeranjang == null){
+    jumlahKeranjang = 0;
+}
+
+cartCount.innerHTML = jumlahKeranjang;
+
+document.querySelectorAll(".cart-btn").forEach(function(btn){
+
+    btn.addEventListener("click",function(){
+
+        jumlahKeranjang++;
+
+        localStorage.setItem("cart", jumlahKeranjang);
+
+        cartCount.innerHTML = jumlahKeranjang;
+
+        tampilNotif("Produk berhasil ditambahkan.");
+
+    });
+
+});
+
+
+/* ===== NOTIFIKASI ===== */
+
+function tampilNotif(teks){
+
+    let notif = document.createElement("div");
+
+    notif.className="notif";
+
+    notif.innerHTML=teks;
+
+    document.body.appendChild(notif);
+
+    setTimeout(function(){
+
+        notif.classList.add("show");
+
+    },100);
+
+    setTimeout(function(){
+
+        notif.remove();
+
+    },2500);
+
+}
+
+
+/* ===== DARK MODE ===== */
+
+let dark=document.createElement("button");
+
+dark.innerHTML="🌙";
+
+dark.className="dark-btn";
+
+document.body.appendChild(dark);
+
+dark.onclick=function(){
+
+    document.body.classList.toggle("dark");
+
+}
+
+
+/* ===== BACK TO TOP ===== */
+
+let topBtn=document.createElement("button");
+
+topBtn.innerHTML="⬆";
+
+topBtn.className="top-btn";
+
+document.body.appendChild(topBtn);
+
+window.onscroll=function(){
+
+    if(window.scrollY>400){
+
+        topBtn.style.display="flex";
+
+    }else{
+
+        topBtn.style.display="none";
+
+    }
+
+}
+
+topBtn.onclick=function(){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}

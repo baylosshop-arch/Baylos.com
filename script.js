@@ -261,3 +261,32 @@ topBtn.onclick=function(){
     });
 
 }
+
+
+/* ===========================
+WISHLIST
+=========================== */
+
+let wishlist = localStorage.getItem("wishlist");
+
+if(wishlist == null){
+
+wishlist = 0;
+
+}
+
+const tombolWishlist = document.querySelectorAll(".icon-btn");
+
+tombolWishlist.forEach(function(btn){
+
+btn.addEventListener("click",function(){
+
+wishlist++;
+
+localStorage.setItem("wishlist",wishlist);
+
+tampilNotif("❤️ Ditambahkan ke Wishlist");
+
+});
+
+});

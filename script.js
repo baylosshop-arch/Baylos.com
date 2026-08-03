@@ -250,3 +250,41 @@ alert("Selamat datang "+user);
 tutupLogin();
 
 }
+
+// =========================
+// WISHLIST PAGE
+// =========================
+
+function addWishlist(nama){
+
+let list = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+list.push(nama);
+
+localStorage.setItem("wishlist",JSON.stringify(list));
+
+alert("Produk ditambahkan ke Wishlist ❤️");
+
+}
+
+const wishlistPage=document.getElementById("wishlist-list");
+
+if(wishlistPage){
+
+let list=JSON.parse(localStorage.getItem("wishlist")) || [];
+
+list.forEach(function(item){
+
+wishlistPage.innerHTML += `
+
+<div class="card">
+
+<h3>${item}</h3>
+
+</div>
+
+`;
+
+});
+
+}

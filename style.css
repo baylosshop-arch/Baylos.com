@@ -634,3 +634,27 @@ cursor:pointer;
 align-self:flex-end;
 
 }
+
+.wish-btn{
+
+background:#ff4081;
+
+color:white;
+
+border:none;
+
+padding:10px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:18px;
+
+}
+
+.wish-btn:hover{
+
+background:#e91e63;
+
+}

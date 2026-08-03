@@ -1,292 +1,173 @@
-/* ==========================================
-   BAYLOS SHOP V3
-========================================== */
-
 // =========================
-// SLIDER
+// Baylos Shop Script
 // =========================
 
-const slides = document.querySelectorAll(".slide");
-const dots = document.querySelectorAll(".dot");
+// Keranjang
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-let slideIndex = 0;
+updateCart();
 
-function showSlide(index){
+// =========================
+// Tambah Keranjang
+// =========================
 
-    slides.forEach((slide)=>{
-        slide.classList.remove("active");
-    });
+function addToCart(nama,harga){
 
-    dots.forEach((dot)=>{
-        dot.classList.remove("active");
-    });
+cart.push({
+nama:nama,
+harga:harga
+});
 
-    slides[index].classList.add("active");
-    dots[index].classList.add("active");
+localStorage.setItem("cart",JSON.stringify(cart));
+
+updateCart();
+
+alert(nama+" berhasil ditambahkan.");
+}
+
+// =========================
+// Wishlist
+// =========================
+
+function addWishlist(nama){
+
+wishlist.push(nama);
+
+localStorage.setItem("wishlist",JSON.stringify(wishlist));
+
+alert(nama+" ditambahkan ke Wishlist.");
+}
+
+// =========================
+// Update Icon Keranjang
+// =========================
+
+function updateCart(){
+
+const cartCount=document.getElementById("cart-count");
+
+if(cartCount){
+
+cartCount.innerHTML=cart.length;
 
 }
 
-function nextSlide(){
+}
 
-    slideIndex++;
+// =========================
+// Search
+// =========================
 
-    if(slideIndex >= slides.length){
-        slideIndex = 0;
-    }
+const search=document.querySelector("input");
 
-    showSlide(slideIndex);
+if(search){
+
+search.addEventListener("keyup",function(){
+
+let value=this.value.toLowerCase();
+
+let card=document.querySelectorAll(".card");
+
+card.forEach(function(item){
+
+let text=item.innerText.toLowerCase();
+
+if(text.indexOf(value)>-1){
+
+item.style.display="block";
+
+}else{
+
+item.style.display="none";
 
 }
 
-setInterval(nextSlide,3000);
+});
 
+});
+
+}
 
 // =========================
-// COUNTDOWN
+// Login
 // =========================
 
-let jam = 12;
-let menit = 59;
-let detik = 59;
+const login=document.querySelector(".login-btn");
 
-setInterval(()=>{
+if(login){
 
-    detik--;
+login.onclick=function(){
 
-    if(detik < 0){
-        detik = 59;
-        menit--;
-    }
+alert("Fitur Login akan segera hadir.");
 
-    if(menit < 0){
-        menit = 59;
-        jam--;
-    }
+}
 
-    if(jam < 0){
-        jam = 12;
-    }
+}
 
-    document.getElementById("jam").innerHTML = jam;
-    document.getElementById("menit").innerHTML = menit;
-    document.getElementById("detik").innerHTML = detik;
+// =========================
+// Banner Slider
+// =========================
+
+let slide=0;
+
+const slides=document.querySelectorAll(".slide");
+
+if(slides.length>0){
+
+setInterval(function(){
+
+slides.forEach(function(img){
+
+img.classList.remove("active");
+
+});
+
+slide++;
+
+if(slide>=slides.length){
+
+slide=0;
+
+}
+
+slides[slide].classList.add("active");
+
+},3000);
+
+}
+
+// =========================
+// Countdown Flash Sale
+// =========================
+
+const timer=document.getElementById("timer");
+
+if(timer){
+
+let total=13*60*60;
+
+setInterval(function(){
+
+let h=Math.floor(total/3600);
+
+let m=Math.floor((total%3600)/60);
+
+let s=total%60;
+
+timer.innerHTML=
+h.toString().padStart(2,"0")
++" : "+
+m.toString().padStart(2,"0")
++" : "+
+s.toString().padStart(2,"0");
+
+if(total>0){
+
+total--;
+
+}
 
 },1000);
 
-
-// =========================
-// KERANJANG
-// =========================
-
-let cart = 0;
-
-const cartCount = document.getElementById("cartCount");
-
-document.querySelectorAll(".cart-btn").forEach((btn)=>{
-
-    btn.addEventListener("click",()=>{
-
-        cart++;
-
-        cartCount.innerHTML = cart;
-
-        alert("Produk berhasil masuk keranjang");
-
-    });
-
-});
-
-
-// =========================
-// BELI
-// =========================
-
-document.querySelectorAll(".buy-btn").forEach((btn)=>{
-
-    btn.addEventListener("click",()=>{
-
-        alert("Menu Checkout akan segera dibuka.");
-
-    });
-
-});
-
-
-// =========================
-// SEARCH
-// =========================
-
-const search = document.getElementById("searchInput");
-
-search.addEventListener("keyup",()=>{
-
-    let keyword = search.value.toLowerCase();
-
-    document.querySelectorAll(".card").forEach((card)=>{
-
-        let nama = card.innerText.toLowerCase();
-
-        if(nama.indexOf(keyword) > -1){
-
-            card.style.display="block";
-
-        }else{
-
-            card.style.display="none";
-
-        }
-
-    });
-
-});
-
-
-// =========================
-// WISHLIST
-// =========================
-
-document.querySelector(".icon-btn").addEventListener("click",()=>{
-
-    alert("Produk ditambahkan ke Wishlist ❤️");
-
-});
-
-/* =====================================
-   BAYLOS SHOP PART 5
-===================================== */
-
-/* ===== LOCAL STORAGE CART ===== */
-
-let jumlahKeranjang = localStorage.getItem("cart");
-
-if(jumlahKeranjang == null){
-    jumlahKeranjang = 0;
 }
-
-cartCount.innerHTML = jumlahKeranjang;
-
-document.querySelectorAll(".cart-btn").forEach(function(btn){
-
-    btn.addEventListener("click",function(){
-
-        jumlahKeranjang++;
-
-        localStorage.setItem("cart", jumlahKeranjang);
-
-        cartCount.innerHTML = jumlahKeranjang;
-
-        tampilNotif("Produk berhasil ditambahkan.");
-
-    });
-
-});
-
-
-/* ===== NOTIFIKASI ===== */
-
-function tampilNotif(teks){
-
-    let notif = document.createElement("div");
-
-    notif.className="notif";
-
-    notif.innerHTML=teks;
-
-    document.body.appendChild(notif);
-
-    setTimeout(function(){
-
-        notif.classList.add("show");
-
-    },100);
-
-    setTimeout(function(){
-
-        notif.remove();
-
-    },2500);
-
-}
-
-
-/* ===== DARK MODE ===== */
-
-let dark=document.createElement("button");
-
-dark.innerHTML="🌙";
-
-dark.className="dark-btn";
-
-document.body.appendChild(dark);
-
-dark.onclick=function(){
-
-    document.body.classList.toggle("dark");
-
-}
-
-
-/* ===== BACK TO TOP ===== */
-
-let topBtn=document.createElement("button");
-
-topBtn.innerHTML="⬆";
-
-topBtn.className="top-btn";
-
-document.body.appendChild(topBtn);
-
-window.onscroll=function(){
-
-    if(window.scrollY>400){
-
-        topBtn.style.display="flex";
-
-    }else{
-
-        topBtn.style.display="none";
-
-    }
-
-}
-
-topBtn.onclick=function(){
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
-
-    });
-
-}
-
-
-/* ===========================
-WISHLIST
-=========================== */
-
-let wishlist = localStorage.getItem("wishlist");
-
-if(wishlist == null){
-
-wishlist = 0;
-
-}
-
-const tombolWishlist = document.querySelectorAll(".icon-btn");
-
-tombolWishlist.forEach(function(btn){
-
-btn.addEventListener("click",function(){
-
-wishlist++;
-
-localStorage.setItem("wishlist",wishlist);
-
-tampilNotif("❤️ Ditambahkan ke Wishlist");
-
-});
-
-});

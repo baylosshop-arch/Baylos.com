@@ -171,3 +171,38 @@ total--;
 },1000);
 
 }
+
+// =========================
+// Halaman Keranjang
+// =========================
+
+const cartList = document.getElementById("cart-list");
+
+if(cartList){
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let total = 0;
+
+cart.forEach(function(item){
+
+total += item.harga;
+
+cartList.innerHTML += `
+
+<div class="card">
+
+<h3>${item.nama}</h3>
+
+<p>Rp ${item.harga.toLocaleString()}</p>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("totalHarga").innerHTML =
+"Total : Rp "+total.toLocaleString();
+
+}

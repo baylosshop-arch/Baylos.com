@@ -378,3 +378,157 @@ padding-bottom:75px;
 }
 
 }
+
+/* =======================================
+   RESPONSIVE MOBILE BAYLOS SHOP
+======================================= */
+
+@media (max-width:768px){
+
+.header{
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:10px;
+gap:12px;
+}
+
+.logo h2{
+font-size:26px;
+text-align:center;
+}
+
+nav{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+}
+
+nav a{
+font-size:14px;
+}
+
+.menu-right{
+width:100%;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+}
+
+.search-box{
+width:100%;
+}
+
+.search-box input{
+width:100%;
+max-width:none;
+}
+
+.login-btn{
+width:100%;
+}
+
+.slider{
+margin-top:15px;
+}
+
+.slide{
+width:100%;
+height:auto;
+border-radius:15px;
+}
+
+.kategori-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+}
+
+.kategori-card{
+padding:12px 5px;
+}
+
+.kategori-card p{
+font-size:12px;
+}
+
+.kategori-icon{
+font-size:28px;
+}
+
+.product-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
+
+.card img{
+width:100%;
+height:170px;
+object-fit:cover;
+}
+
+.card-body{
+padding:10px;
+}
+
+.card h3{
+font-size:15px;
+}
+
+.rating{
+font-size:12px;
+}
+
+.harga-asli{
+font-size:18px;
+}
+
+.harga-coret{
+font-size:12px;
+}
+
+.aksi{
+display:flex;
+flex-direction:column;
+gap:8px;
+}
+
+.cart-btn,
+.buy-btn{
+width:100%;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:25px;
+text-align:center;
+}
+
+.newsletter-box{
+padding:25px;
+}
+
+.newsletter-form{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.newsletter-form input,
+.newsletter-form button{
+width:100%;
+}
+
+.bottom-nav{
+display:flex;
+}
+
+body{
+padding-bottom:80px;
+}
+
+}

@@ -1,1 +1,133 @@
+/* ===========================
+   FLASH SALE
+=========================== */
 
+.flash-sale{
+    padding:25px 5%;
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.section-title h2{
+    color:#00a859;
+    font-size:28px;
+    font-weight:700;
+}
+
+.countdown{
+    background:#ff4444;
+    color:#fff;
+    padding:8px 15px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.produk-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+    transition:.3s;
+    position:relative;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card-body{
+    padding:15px;
+}
+
+.card h3{
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.rating{
+    color:#f7b500;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.harga{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.harga-coret{
+    color:#999;
+    text-decoration:line-through;
+}
+
+.harga-asli{
+    color:#00a859;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.aksi{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.cart-btn{
+    flex:1;
+    padding:10px;
+    border:none;
+    background:#0f1f3d;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.buy-btn{
+    flex:1;
+    padding:10px;
+    border:none;
+    background:#00a859;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.badge{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:red;
+    color:white;
+    padding:6px 10px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.badge.promo{
+    background:#ff9800;
+}
+
+.badge.baru{
+    background:#00a859;
+}

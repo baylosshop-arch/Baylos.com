@@ -131,3 +131,54 @@
 .badge.baru{
     background:#00a859;
 }
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.header{
+    flex-direction:column;
+    gap:15px;
+    padding:15px;
+}
+
+nav{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+}
+
+.menu-right{
+    width:100%;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.search-box{
+    width:100%;
+}
+
+.search-box input{
+    width:100%;
+}
+
+.logo h2{
+    font-size:28px;
+}
+
+.section-title{
+    flex-direction:column;
+    gap:10px;
+}
+
+.produk-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.card img{
+    height:170px;
+}
+
+}
